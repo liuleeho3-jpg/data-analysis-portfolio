@@ -1,0 +1,24 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+
+# Jupyter
+.jupyter/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# 环境变量与密钥
+.env
+*.key
+
+# 大文件数据（<1MB 的数据建议直接提交，>20MB 的写下载方式）
+data/raw/*.zip
+data/raw/*.xlsx
