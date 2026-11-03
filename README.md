@@ -7,7 +7,7 @@
 
 | # | 项目 | 主题 | 核心方法 | 状态 |
 |---|------|------|----------|------|
-| 1 | [泰坦尼克号生存分析](./project-01-titanic/) | 分类与统计检验 | 描述统计、卡方检验、logistic 回归 | 🚧 进行中 |
+| 1 | [泰坦尼克号生存分析](./project-01-titanic/) | 分类与统计检验 | 描述统计、卡方检验、logistic 回归 | ✅ 已完成 |
 | 2 | CPI / 社零时间序列预测 | 预测 | ADF 平稳性检验、ARIMA、MAE/RMSE | 📋 计划中 |
 | 3 | 银行信贷违约预测 | 风控 | logistic 回归、ROC-AUC、阈值权衡 | 📋 计划中 |
 
@@ -24,12 +24,12 @@
 data-analysis-portfolio/
 ├── README.md                  # 本文件（作品集首页）
 ├── .gitignore
-└── project-01-titanic/        # 项目 1：泰坦尼克生存分析
-    ├── README.md              # 项目说明（由 README 模板改成）
-    ├── data/                  # 数据（小文件直接提交，大文件写下载方式）
-    ├── notebooks/             # 分析过程
-    ├── images/                # 图表截图（README 里引用）
-    └── requirements.txt
+└── project-01-titanic/        # 项目 1：泰坦尼克生存分析（已完成）
+    ├── README.md              # 项目说明：结论、方法、复现步骤
+    ├── data/                  # titanic.csv（59 KB，直接提交）
+    ├── notebooks/             # 分析过程（含全部输出与图表）
+    ├── images/                # 图表 PNG，README 里引用
+    └── docs/                  # 写作模板、学习笔记
 ```
 
 ## 学习日志
@@ -38,20 +38,19 @@ data-analysis-portfolio/
 
 | 周次 | 日期 | 本周产出 | 卡点 / 下一步 |
 |------|------|----------|----------------|
-| W1 | 2026.11.02–11.08 | 环境 + 数据 + 数据概览 notebook | _待填_ |
+| W1 | 2026.11.02–11.08 | 环境 + 数据 + 项目 1 完成（notebook + README + 3 张图，已推送） | 下一步：W2 时间序列（ADF + ARIMA） |
 | W2 | 2026.11.09–11.15 | _待填_ | _待填_ |
 
 ## 怎么用这个仓库
 
-1. 项目 1 的 `README模板.md` 复制成 `README.md`，按【】提示逐项填写，写完删掉提示。
+1. 新项目先复制 `project-01-titanic/docs/README写作模板.md`，按【】提示逐项填写，写完删掉提示。
 2. 每周至少一次 `git commit`，commit message 写清楚做了什么（如 `feat: add chi-square test for sex vs survived`）。
 3. 图表放 `images/`，README 里用相对路径引用，保证 GitHub 网页能直接看到。
 4. 不造假：数字必须是代码跑出来的，结论必须能讲清"所以呢"。
 
 ## 联系
 
-- GitHub：[@你的用户名](https://github.com/你的用户名)
-- 邮箱：你的邮箱
+- GitHub：[@liuleeho3-jpg](https://github.com/liuleeho3-jpg)
 
 ---
 
