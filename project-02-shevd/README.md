@@ -60,6 +60,24 @@ notebook 四步对应四个问题：
 | ③ 充电行为 | 充电会话识别、SOC-功率曲线 | 2 次慢充、3.25 kW、37.58 kWh |
 | ④ 电池与能耗 | 单体电压极差、温度、能量积分 | 极差 9 mV、21.5 kWh/100km |
 
+### 数据清洗与预处理链路（`src/`）
+
+WorkBuddy 阶段的清洗脚本一并入库，可从原始数据完整复现"清洗 → 预处理"，路径已改为仓库内相对路径：
+
+| 脚本 | 输入 | 输出 |
+|------|------|------|
+| `src/clean_data.py` | `data/raw/SHEVDC_OV6N7709.csv` | `data/processed/SHEVDC_清洗后数据.csv`、`异常处理记录.csv` |
+| `src/convert_time.py` | 清洗后数据 | `SHEVDC_时间戳转换.csv`（8 个标准时间字段，按 UTC+8 处理） |
+| `src/preprocess.py` | 清洗后数据 | `SHEVDC_预处理后数据.csv`（30 列，含 5 个衍生特征 + `is_outlier`）、`异常值清单.csv`、`描述性统计表.csv` |
+
+```bash
+cd project-02-shevd
+python src/clean_data.py
+python src/preprocess.py
+```
+
+**清洗规则**（人工设定，不是自动拍的）：缺失值只在**能唯一推算**时补齐并记录依据；无法确认的进异常清单、不参与汇总；数值异常不删改、只登记；完全重复记录保留一条。清洗全过程见 [`docs/完整数据分析报告.md`](./docs/完整数据分析报告.md) 与 [`docs/数据清洗报告.md`](./docs/数据清洗报告.md)。
+
 ## 4. 主要发现
 
 **① 工况画像**：6,231 条记录里，停车充电 **4,366 条（70.1%）**、未充电行驶 **1,539 条（24.7%）**、行驶充电/能量回收 **272 条（4.4%）**、充电完成 54 条（0.9%）。实际行驶时长约 **3.73 小时**、日均行驶里程 214 km（1.46 天）。
@@ -119,14 +137,28 @@ project-02-shevd/
 ├── README.md
 ├── requirements.txt
 ├── data/
-│   ├── README.md                  # 字段说明与数据规模
-│   └── raw/
-│       └── SHEVDC_OV6N7709.csv    # 原始数据（约 640 KB，已提交）
+│   ├── README.md                        # 字段说明与数据规模
+│   ├── raw/
+│   │   └── SHEVDC_OV6N7709.csv          # 原始数据（约 640 KB，已提交）
+│   └── processed/                       # 清洗 / 预处理产物（脚本可复现）
+│       ├── SHEVDC_清洗后数据.csv
+│       ├── SHEVDC_预处理后数据.csv
+│       ├── 异常处理记录.csv
+│       ├── 异常值清单.csv
+│       └── 描述性统计表.csv
 ├── notebooks/
 │   └── 01_SHEVDC车辆运行数据分析.ipynb
+├── src/
+│   ├── clean_data.py                    # 清洗：ffill 补齐、异常登记
+│   ├── convert_time.py                  # 时间戳转换（UTC+8）
+│   └── preprocess.py                    # 特征工程 + 异常检测 + 描述统计
 ├── docs/
-│   ├── WorkBuddy分析记录.md        # 原始分析过程（AI 协作会话，含清洗与预处理）
-│   └── 分析记录.md                 # 复核后的分析过程：探查、决策、踩坑
+│   ├── 完整数据分析报告.md              # AI 报告原文（含复核说明）
+│   ├── WorkBuddy分析记录.md             # 原始分析过程（会话记录）
+│   ├── 分析记录.md                      # 复核后的过程：探查、决策、踩坑
+│   ├── 数据清洗报告.md
+│   ├── 数据特征分析报告.md
+│   └── 数据预处理报告.md
 └── images/
     ├── state_share.png
     ├── timeline_soc_speed.png

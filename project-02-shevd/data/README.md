@@ -4,7 +4,14 @@
 
 | 文件 | 大小 | 说明 |
 |------|------|------|
-| `raw/SHEVDC_OV6N7709.csv` | 约 640 KB | 单车 10 秒级运行记录，6,231 行 × 24 列 |
+| `raw/SHEVDC_OV6N7709.csv` | 约 640 KB | 单车 10 秒级运行记录，6,231 行 × 24 列（原始数据） |
+| `processed/SHEVDC_清洗后数据.csv` | 约 646 KB | 里程 `"ffill"` 污染已前向填充，6,231 行 × 24 列 |
+| `processed/SHEVDC_预处理后数据.csv` | 约 831 KB | 清洗后 + 5 个衍生特征 + `is_outlier` 标记，30 列 |
+| `processed/异常处理记录.csv` | 约 442 KB | 4,263 条补齐记录 + 4 条里程跳变，含行号、原值、补充值、依据 |
+| `processed/异常值清单.csv` | 约 36 KB | 912 条 3σ 统计离群明细 |
+| `processed/描述性统计表.csv` | 约 1 KB | 14 个数值特征的描述统计 |
+
+> `processed/` 下的文件都可以由 `src/clean_data.py` 和 `src/preprocess.py` 从 `raw/` 重新生成，提交它们是为了让读者不装环境也能直接看到清洗结果。
 
 ## 为什么直接提交
 
