@@ -123,6 +123,8 @@ project-02-shevd/
 │       └── SHEVDC_OV6N7709.csv    # 原始数据（约 640 KB，已提交）
 ├── notebooks/
 │   └── 01_SHEVDC车辆运行数据分析.ipynb
+├── docs/
+│   └── 分析记录.md                 # 实际分析过程：探查、决策、踩坑
 └── images/
     ├── state_share.png
     ├── timeline_soc_speed.png
