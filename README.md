@@ -34,7 +34,7 @@ data-analysis-portfolio/
 │   └── docs/                  # 写作模板、学习笔记
 └── project-02-shevd/          # 项目 2：SHEVDC 车辆运行数据分析（已完成）
     ├── README.md              # 结论：214 km / 21.5 kWh/100km / 2 次慢充
-    ├── data/                  # 数据说明（原始 CSV 不入库）
+    ├── data/                  # 原始 CSV（640 KB，已提交，clone 即可复现）
     ├── notebooks/             # 分析过程（含全部输出与图表）
     └── images/                # 4 张图表
 ```

@@ -26,6 +26,7 @@
 ## 2. 数据
 
 - **来源**：SHEVDC 平台导出的单车运行记录（`SHEVDC_OV6N7709.csv`）
+- **文件**：`data/raw/SHEVDC_OV6N7709.csv`（约 640 KB，**已随仓库提交**，clone 下来即可直接复现）
 - **规模**：6,231 行 × 24 列，10 秒采样
 - **时间范围**：2019-01-10 01:12 — 2019-01-11 12:16（约 35.1 小时）
 
@@ -45,7 +46,7 @@
 - 单车、1.5 天，样本极小，不能代表车队或季节规律；
 - `insulationresistance` 单位口径未确认，本次**未用于安全结论**。
 
-> ⚠️ 原始数据**不入库**（涉及车辆运行信息，来源是导出的数据文件）。复现方式见第 6 节与 [`data/README.md`](./data/README.md)。
+> ✅ 原始数据约 640 KB，已随仓库提交，`git clone` 即可完整复现所有图表与结论。字段说明见 [`data/README.md`](./data/README.md)。
 
 ## 3. 分析流程
 
@@ -100,8 +101,7 @@ notebook 四步对应四个问题：
 git clone https://github.com/liuleeho3-jpg/data-analysis-portfolio.git
 cd data-analysis-portfolio/project-02-shevd
 
-# 1) 把数据放到 data/raw/（数据不入库）
-#    data/raw/SHEVDC_OV6N7709.csv
+# 数据已随仓库提供：data/raw/SHEVDC_OV6N7709.csv（约 640 KB）
 
 python -m venv .venv
 .venv\Scripts\activate          # Windows
@@ -118,8 +118,9 @@ project-02-shevd/
 ├── README.md
 ├── requirements.txt
 ├── data/
-│   ├── .gitkeep
-│   └── README.md          # 数据说明（原始 CSV 不入库）
+│   ├── README.md                  # 字段说明与数据规模
+│   └── raw/
+│       └── SHEVDC_OV6N7709.csv    # 原始数据（约 640 KB，已提交）
 ├── notebooks/
 │   └── 01_SHEVDC车辆运行数据分析.ipynb
 └── images/
