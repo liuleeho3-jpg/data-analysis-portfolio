@@ -1,0 +1,5 @@
+# 项目 2 运行环境（Python 3.10+）
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+jupyterlab>=4.0

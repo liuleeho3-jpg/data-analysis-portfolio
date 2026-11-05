@@ -22,3 +22,6 @@ Thumbs.db
 # 大文件数据（<1MB 的数据建议直接提交，>20MB 的写下载方式）
 data/raw/*.zip
 data/raw/*.xlsx
+
+# 项目 2：平台导出的原始车辆数据不入库（见 project-02-shevd/data/README.md）
+project-02-shevd/data/raw/
